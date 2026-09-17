@@ -16,6 +16,7 @@ builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
 builder.Services.AddScoped<ITuitionCalcOrchestrator, TuitionCalcOrchestrator>();
 builder.Services.AddScoped<ITuitionCalcRepository, TuitionCalcRepository>();
 
+QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
 
 var app = builder.Build();

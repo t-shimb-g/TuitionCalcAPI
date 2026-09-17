@@ -4,7 +4,7 @@ using TuitionCalc.Repositories;
 
 namespace TuitionCalc.Orchestrator {
     public interface ITuitionCalcOrchestrator {
-        IEnumerable<Family> ImportCSV(Stream importCSV); // eventually will return FileContentResult
+        byte[] ImportCSV(Stream importCSV); // eventually will return FileContentResult
     }
 
     public class TuitionCalcOrchestrator : ITuitionCalcOrchestrator
@@ -15,9 +15,12 @@ namespace TuitionCalc.Orchestrator {
             _tuitionCalcRepository = tuitionCalcRepository;
         }
 
-        public IEnumerable<Family> ImportCSV(Stream importCSV) { // eventually will return FileContentResult
+        public byte[] ImportCSV(Stream importCSV) { // eventually will return FileContentResult
             var processedCSV = _tuitionCalcRepository.ProcessCSV(importCSV);
-            return _tuitionCalcRepository.ProduceJSON(processedCSV);
+            var families = _tuitionCalcRepository.ProduceJSON(processedCSV);
+            var pdfBytes = _tuitionCalcRepository.BuildFamiliesPdf(families);
+            return pdfBytes;
+            _tuitionCalcRepository.CalcTuition(families);
         }
     }
 }

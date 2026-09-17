@@ -16,8 +16,10 @@ namespace TuitionCalc.Controllers {
             return "Get route is working";
         }
         [HttpPost("submitCSV")]
-        public IEnumerable<Family> Post(IFormFile csvFile) { // eventually will return FileContentResult
-            return _tuitionCalcOrchestrator.ImportCSV(csvFile.OpenReadStream());
+        public IActionResult Post(IFormFile csvFile) { // eventually will return FileContentResult
+            var pdfBytes = _tuitionCalcOrchestrator.ImportCSV(csvFile.OpenReadStream());
+            return File(pdfBytes, "application/pdf", "tuition.pdf");
+            // File(byte[] fileContents, string contentType, string fileDownloadName)
         }
     }
 }

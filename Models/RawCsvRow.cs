@@ -8,5 +8,6 @@
         public decimal? RaiseRight { get; set; }
         public decimal? TuitionAssistance { get; set; }
         public decimal? CalledWorkerDiscount { get; set; }
+        public decimal? Miscellaneous { get; set; }
     }
 }
