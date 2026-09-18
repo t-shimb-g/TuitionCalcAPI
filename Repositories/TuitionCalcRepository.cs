@@ -17,16 +17,16 @@ namespace TuitionCalc.Repositories {
             public RawCsvRowMap() {
                 Map(m => m.Family).Name("family");
                 Map(m => m.Student).Name("student");
-                Map(m => m.Grade).Name("Grade");
-                Map(m => m.HeritageScholarship).Name("Heritage Scholarship");
+                Map(m => m.Grade).Name("grade");
+                Map(m => m.Scholarship).Name("scholarship");
                 Map(m => m.RaiseRight).Name("raiseright");
                 Map(m => m.TuitionAssistance).Name("tuition assts");
-                Map(m => m.CalledWorkerDiscount).Name("called worker discount");
+                Map(m => m.WorkerDiscount).Name("worker discount");
                 Map(m => m.Miscellaneous).Name("miscellaneous");
                 // If any text in field => true
-                Map(m => m.GslcMember)
-                    .Name("GSLC member")
-                    .Convert(args => !string.IsNullOrWhiteSpace(args.Row.GetField("GSLC member")));
+                Map(m => m.Member)
+                    .Name("member")
+                    .Convert(args => !string.IsNullOrWhiteSpace(args.Row.GetField("member")));
                     // ^^^ Retrieves raw CSV value, checks if it contains ANY text, if so -> true, else false
             }
         }
@@ -54,11 +54,11 @@ namespace TuitionCalc.Repositories {
                 var student = new Student {
                     Name = row.Student,
                     Grade = row.Grade,
-                    HeritageScholarship = row.HeritageScholarship.GetValueOrDefault(), // Sets to 0 if null, otherwise sets to value
-                    GSLChurchMember = row.GslcMember,
+                    Scholarship = row.Scholarship.GetValueOrDefault(), // Sets to 0 if null, otherwise sets to value
+                    Member = row.Member,
                     RaiseRight = row.RaiseRight.GetValueOrDefault(),
                     TuitionAssistance = row.TuitionAssistance.GetValueOrDefault(),
-                    CalledWorkerDiscount = row.CalledWorkerDiscount.GetValueOrDefault(),
+                    WorkerDiscount = row.WorkerDiscount.GetValueOrDefault(),
                     Miscellaneous = row.Miscellaneous.GetValueOrDefault(),
                 };
 
@@ -69,16 +69,13 @@ namespace TuitionCalc.Repositories {
         }
 
         public byte[] BuildFamiliesPdf(IEnumerable<Family> families) {
-            var document = Document.Create(container =>
-            {
-                container.Page(page =>
-                {
+            var document = Document.Create(container => {
+                container.Page(page => {
                     page.Margin(40);
 
                     page.Header().Text("Tuition Report").FontSize(20).Bold();
 
-                    page.Content().Column(col =>
-                    {
+                    page.Content().Column(col => {
                         foreach (var family in families) {
                             col.Item().Text(family.FamilyName).FontSize(16).Bold();
 
