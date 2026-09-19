@@ -11,7 +11,7 @@ This is a C# API used for generating student data from a `.csv` to a `.pdf`.
 | Family AE | Student AE1|   4   |     No     |          —          |  $204.60   |     $4,000.00      |       —       |
 | Family AO | Student AO1|   7   |     No     |      $2,394.00      |     —      |         —          |       —       |
 
-Above is a sample input for the `.csv` containing student tuition data. Sample spreadsheet can be found [here]().
+Above is a sample input for the `.csv` containing student tuition data. Sample spreadsheet can be found [here](https://github.com/t-shimb-g/TuitionCalcAPI/blob/main/TestSpreadsheet.csv).
 
 ## Calling API
 ### Health route
@@ -25,3 +25,11 @@ A `POST` route that returns a processed `.pdf` file containing the `.csv` file d
 `http://tuitioncalc.runasp.net/submitcsv`
 
 ## Sample Output
+[Current PDF output]()
+[Eventual PDF output]()
+
+
+## TODO:
+- Implement Google authentication to use API
+- Format data into proper tuition statement
+- React UI for user to submit the CSV
