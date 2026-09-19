@@ -25,8 +25,8 @@ A `POST` route that returns a processed `.pdf` file containing the `.csv` file d
 `http://tuitioncalc.runasp.net/submitcsv`
 
 ## Sample Output
-[Current PDF output]()
-[Eventual PDF output]()
+[Current PDF output](https://github.com/t-shimb-g/TuitionCalcAPI/blob/main/tuition.pdf)
+[Eventual PDF output](https://github.com/t-shimb-g/TuitionCalcAPI/blob/main/TestSpreadsheet.pdf)
 
 
 ## TODO:
