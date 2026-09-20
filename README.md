@@ -1,6 +1,9 @@
 # Tuition Calculator API
 This is a C# API used for generating student data from a `.csv` to a `.pdf`.
 
+## Project Goal
+Create UI and API to allow elementary school to create tuition `.pdf`s based on `.csv` of family data.
+
 ## Sample Input
 | Family    | Student    | Grade |   Member   |     Scholarship     | RaiseRight | Tuition Assistance | Miscellaneous |
 | :-------- | :--------- | :---: |:----------:|:-------------------:| :--------: | :----------------: | :-----------: |
@@ -30,6 +33,6 @@ A `POST` route that returns a processed `.pdf` file containing the `.csv` file d
 
 
 ## TODO:
-- Implement Google authentication to use API
+- Create React UI for user to submit the CSV
+- Add Google User authentication to UI
 - Format data into proper tuition statement
-- React UI for user to submit the CSV
